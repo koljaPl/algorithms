@@ -3,7 +3,7 @@
 not_sorted_array = [2, 8, 5, 3, 9, 4, 1]
 print("Before:   ", not_sorted_array)
 
-# Time Complexity:      θ(n ** 2)
+# Time Complexity:      O(n ** 2)
 # Space Complexity :    O(1)
 def bubble_sort_v1(array):
     n = len(array)
