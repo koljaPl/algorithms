@@ -8,11 +8,11 @@ class TreeNode:
         return TreeNode(self.val, self.left, self.right)
 
 
-root_example = TreeNode(1)
-root_example.left = TreeNode(2)
-root_example.right = TreeNode(3)
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
 
-root_example.left.left = TreeNode(4)
-root_example.left.right = TreeNode(5)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
 
-root_example.right.right = TreeNode(6)
+root.right.right = TreeNode(6)
