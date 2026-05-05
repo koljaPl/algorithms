@@ -1,0 +1,1 @@
+#  I watched the video and looked at the code for AVL trees; I'll be implementing the code tomorrow.
