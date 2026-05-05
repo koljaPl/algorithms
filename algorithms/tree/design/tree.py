@@ -7,6 +7,15 @@ class TreeNode:
     def copy(self):
         return TreeNode(self.val, self.left, self.right)
 
+    def deep_copy(self):
+        new_node = TreeNode(self.val)
+
+        if self.left:
+            new_node.left = self.left.deep_copy()
+        if self.right:
+            new_node.right = self.right.deep_copy()
+        
+        return new_node
 
 root = TreeNode(1)
 root.left = TreeNode(2)
