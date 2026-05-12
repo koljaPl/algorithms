@@ -1,4 +1,22 @@
-# I started watching a video about B-trees. It's interesting, but I'm not quite sure yet how to implement them.
+from collections import deque
+
+# Height of AVL Tree:
+# O( log t (n) )
+
+# Time complexity:
+
+# Search: O( t  * log t (n) )
+
+# Insert: O( log t (n) ) or O(lon n)
+
+# Delete: O( t * log t (n) )
+
+# Split:  O(t)
+# Merge:  O(t)
+
+# Space complexity:
+# Memory: O(n)
+
 
 class BTreeNode:
     def __init__(self, leaf):
@@ -170,66 +188,90 @@ class BTree:
 
         return self.delete_successor(node.children[0])
 
-    def delete_merge(self, node, i, j):
-        curr_node = node.children[i]
+    def delete_merge(self, parent, child_index, sibling_index):
+        current_child = parent.children[child_index]
 
-        if j > i:
-            right_sibling_node = node.children[j]
-            curr_node.keys.append(node.keys[i])
+        # merge with right sibling
+        if sibling_index > child_index:
+            right_sibling = parent.children[sibling_index]
 
-            for k in range(len(right_sibling_node.keys)):
-                curr_node.keys.append(right_sibling_node.keys[k])
+            # move separator key from parent
+            current_child.keys.append(parent.keys[child_index])
 
-                if len(right_sibling_node.children) > 0:
-                    curr_node.children.append(right_sibling_node.children[k])
+            # move sibling keys
+            current_child.keys.extend(right_sibling.keys)
 
-            if len(right_sibling_node.children) > 0:
-                curr_node.children.append(right_sibling_node.children.pop())
+            # move sibling children
+            if not right_sibling.leaf:
+                current_child.children.extend(right_sibling.children)
 
-            new_node = curr_node
+            merged_node = current_child
 
-            node.keys.pop(i)
-            node.children.pop(j)
+            # remove separator from parent
+            parent.keys.pop(child_index)
+
+            # remove sibling
+            parent.children.pop(sibling_index)
+
+        # merge with left sibling
         else:
-            left_sibling_node = node.children[j]
-            left_sibling_node.keys.append(node.keys[j])
+            left_sibling = parent.children[sibling_index]
 
-            for k in range(len(curr_node.keys)):
-                left_sibling_node.keys.append(curr_node.keys[k])
+            # move separator key from parent
+            left_sibling.keys.append(parent.keys[sibling_index])
 
-                if len(left_sibling_node.children) > 0:
-                    left_sibling_node.children.append(curr_node.children[k])
+            # move current child keys
+            left_sibling.keys.extend(current_child.keys)
 
-            if len(left_sibling_node.children) > 0:
-                left_sibling_node.children.append(curr_node.children.pop())
+            # move current child children
+            if not current_child.leaf:
+                left_sibling.children.extend(current_child.children)
 
-            new_node = left_sibling_node
+            merged_node = left_sibling
 
-            node.keys.pop(j)
-            node.children.pop(i)
+            # remove separator from parent
+            parent.keys.pop(sibling_index)
 
-        if node == self.root and len(node.keys) == 0:
-            self.root = new_node
+            # remove current child
+            parent.children.pop(child_index)
 
-    def delete_sibling(self, node, i, j):
-        curr_node = node.children[i]
+        # root collapse
+        if parent == self.root and len(parent.keys) == 0:
+            self.root = merged_node
 
-        if i < j:
-            right_sibling_node = node.children[j]
-            curr_node.keys.append(node.keys[i])
-            node.keys[i] = right_sibling_node.keys[0]
+    def delete_sibling(self, parent, child_index, sibling_index):
+        current_child = parent.children[child_index]
 
-            if len(right_sibling_node.children) > 0:
-                curr_node.children.append(right_sibling_node.children[0])
-                right_sibling_node.children.pop(0)
+        # borrow from right sibling
+        if sibling_index > child_index:
+            right_sibling = parent.children[sibling_index]
 
-            right_sibling_node.keys.pop(0)
+            # move parent separator down
+            current_child.keys.append(parent.keys[child_index])
+
+            # move sibling key up
+            borrowed_key = right_sibling.keys.pop(0)
+
+            parent.keys[child_index] = borrowed_key
+
+            # move child pointer if needed
+            if not right_sibling.leaf:
+                borrowed_child = right_sibling.children.pop(0)
+                current_child.children.append(borrowed_child)
+
+        # borrow from left sibling
         else:
-            left_sibling_node = node.children[j]
+            left_sibling = parent.children[sibling_index]
 
-            curr_node.keys.insert(0, node.keys[i - 1])
+            # move parent separator down
+            current_child.keys.insert(0, parent.keys[child_index - 1])
 
-            node.keys[i - 1] = left_sibling_node.keys.pop()
+            # move sibling key up
+            borrowed_key = left_sibling.keys.pop()
 
-            if len(left_sibling_node.children) > 0:
-                curr_node.children.insert(0, left_sibling_node.children.pop())
+            parent.keys[child_index - 1] = borrowed_key
+
+            # move child pointer if needed
+            if not left_sibling.leaf:
+                borrowed_child = left_sibling.children.pop()
+                current_child.children.insert(0, borrowed_child)
