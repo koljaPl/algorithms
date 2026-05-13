@@ -1,6 +1,8 @@
 # Heap - Min Heap and Max Heap
 
 # Min Heap AND Max Heap:
+# Height:        O(log n)
+#
 # Insert:        O(log n)
 # Pop:           O(log n)
 # Top:           O(1)
@@ -186,3 +188,18 @@ class MaxHeap:
 # print(-heapq.heappop(heap))
 
 # See? It's just numbers with - and we print it also like - so we get anti-min-heap what is max heap.
+
+# ---------------------------------------------------------------------------------------------------
+
+# Where can we use it (Problems like Codeforces and AtCoder)?
+
+# 1. Find minimum/maximum (specially many times or dynamically)
+# 2. Top K (k largest or k smallest)
+# 3. "Elements are always coming"
+# 4. Priority Matters
+# 5. Shortest Something (like path, in that thing we can add his Majesty the Dijkstra algorithm,
+#                        the rising star A*, and, for example, best-first search)
+# 6. Closest Something (like k the closest points)
+# 7. Data Stream (stream, online, real-time)
+
+# But the best way to use heap is dynamic minimum/maximum
