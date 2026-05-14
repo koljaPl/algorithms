@@ -1,5 +1,6 @@
 # Red-Black Tree's:
-# Height:     O( 2 log2 (n + 1) )
+# Height:     O( 2 * log2 (n + 1) ) ( or
+#                                      h ≤ O( 2 * log2 (n + 1) )
 #
 # Time Complexity:
 # Search:     O(log n)
@@ -157,97 +158,98 @@ class RedBlackTree:
         if node == self.NIL:
             return "Key not found!"
 
-        dummy_node = node
-        dummy_node_orig_color = dummy_node.color
+        moved_node = node
+        moved_node_orig_color = moved_node.color
 
         # case 1
         if node.left == self.NIL:
-            node = node.right
+            replacement = node.right
             self.transplant(node, node.right)
 
         # case 2
         elif node.right == self.NIL:
-            node = node.left
+            replacement = node.left
             self.transplant(node, node.left)
 
         # case 3
         else:
-            dummy_node = self.minimum(node.right)
-            dummy_node_orig_color = dummy_node.color
-            node = dummy_node.right
+            moved_node = self.minimum(node.right)
+            moved_node_orig_color = moved_node.color
+            replacement = moved_node.right
 
-            if dummy_node.parent == node:
-                node.parent = dummy_node
+            if moved_node.parent == node:
+                replacement.parent = moved_node
             else:
-                self.transplant(dummy_node, dummy_node.right)
-                dummy_node.right = node.right
-                dummy_node.right.parent = dummy_node
+                self.transplant(moved_node, moved_node.right)
+                moved_node.right = node.right
+                moved_node.right.parent = moved_node
 
-            self.transplant(node, dummy_node)
-            dummy_node.left = node.left
-            dummy_node.left.parent = dummy_node
-            dummy_node.color = node.color
+            self.transplant(node, moved_node)
+            moved_node.left = node.left
+            moved_node.left.parent = moved_node
+            moved_node.color = node.color
 
-        if dummy_node_orig_color == BLACK:
-            self.delete_fixup(node)
+        if moved_node_orig_color == BLACK:
+            self.delete_fixup(replacement)
 
     # O(log n)
     def delete_fixup(self, node):
         while node != self.root and node.color == BLACK:
             if node == node.parent.left:
-                parent_right = node.parent.right
+                sibling = node.parent.right
 
-                # type 1
-                if parent_right.color == RED:
-                    parent_right.color = BLACK
+                # type 1 - brother is RED
+                if sibling.color == RED:
+                    sibling.color = BLACK
                     node.parent.color = RED
                     self.left_rotate(node.parent)
-                    parent_right = node.parent.right
+                    sibling = node.parent.right
 
-                # type 2
-                if parent_right.left.color == BLACK and parent_right.right.color == BLACK:
-                    parent_right.color = RED
+                # type 2 - brothers kids are all BLACK
+                if sibling.left.color == BLACK and sibling.right.color == BLACK:
+                    sibling.color = RED
                     node = node.parent
                 else:
-                    # type 3
-                    if parent_right.right.color == BLACK:
-                        parent_right.left.color = BLACK
-                        parent_right.color = RED
-                        self.right_rotate(parent_right)
-                        parent_right = node.parent.right
+                    # type 3 - right brothers kid is BLACK
+                    if sibling.right.color == BLACK:
+                        sibling.left.color = BLACK
+                        sibling.color = RED
+                        self.right_rotate(sibling)
+                        sibling = node.parent.right
 
-                    # type 4
-                    parent_right.color = node.parent.color
+                    # type 4 - right brothers kid is RED
+                    sibling.color = node.parent.color
                     node.parent.color = BLACK
-                    parent_right.right.color = BLACK
+                    sibling.right.color = BLACK
                     self.left_rotate(node.parent)
                     node = self.root
             else:
-                parent_right = node.parent.left
+                # Mirror of another case
+                sibling = node.parent.left
 
                 # type 1
-                if parent_right.color == RED:
-                    parent_right.color = BLACK
+                if sibling.color == RED:
+                    sibling.color = BLACK
                     node.parent.color = RED
-                    self.right_rotate(node.p)
-                    parent_right = node.parent.left
+                    self.right_rotate(node.parent)
+                    sibling = node.parent.left
 
                 # type 2
-                if parent_right.right.color == BLACK and parent_right.left.color == BLACK:
-                    parent_right.color = RED
+                if sibling.right.color == BLACK and sibling.left.color == BLACK:
+                    sibling.color = RED
                     node = node.parent
                 else:
                     # type 3
-                    if parent_right.left.color == BLACK:
-                        parent_right.right.color = BLACK
-                        parent_right.color = RED
-                        self.left_rotate(parent_right)
-                        parent_right = node.parent.left
+                    if sibling.left.color == BLACK:
+                        sibling.right.color = BLACK
+                        sibling.color = RED
+                        self.left_rotate(sibling)
+                        sibling = node.parent.left
 
                     # type 4
-                    parent_right.color = node.parent.color
+                    sibling.color = node.parent.color
                     node.parent.color = BLACK
-                    parent_right.left.color = BLACK
+                    sibling.left.color = BLACK
                     self.right_rotate(node.parent)
                     node = self.root
 
@@ -282,3 +284,30 @@ class RedBlackTree:
                 node = node.right
 
         return node
+
+# As I understand it, a Red-Black Tree is not faster than an AVL tree for simple lookups, as its height is
+# still slightly greater than that of an AVL tree; however, due to its structure, it is better suited for a
+# balance between insertion, deletion and lookup speeds.
+#
+# Where it is used:
+# This is not really intended for problems of the Codeforces or AtCoder variety, but is more of a
+# high-level algorithm. We use it behind the scenes because of its ability to achieve an exact
+# O(log) time complexity.
+#
+# But we can use it in types of problems like:
+# 1. Dynamic Set (support a set of numbers and perform the following operations: insert ; delete ; find ; next/previous element)
+# 2. Ordered Set / Ordered Map Problems ("find the kth element" or "how many numbers are less than x")
+# 3. Sweep Line ( Geometry and intervals:
+#                       - Example problems:
+#                       - intersection of line segments
+#                       - nearest points
+#                       - active events )
+# 4. Interval Scheduling / Calendar Systems
+# 5. Networking / OS-Level Scheduling
+#
+# Tss... To be more specific about the tasks:
+# 1. Maintain sorted set with updates
+# 2. Dynamic median
+# 3. Intervals + queries
+# 4. Online queries
+# But probobly you gonna used behind the scene
