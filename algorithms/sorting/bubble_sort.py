@@ -15,7 +15,10 @@ def bubble_sort_v1(array):
 
     return None
 
-print("After V1: ", bubble_sort_v1(not_sorted_array.copy()))
+not_sorted_array_v1 = not_sorted_array.copy()
+bubble_sort_v1(not_sorted_array_v1)
+
+print("After V1: ", not_sorted_array_v1)
 
 
 # Time Complexity:      θ(n ** 2), Ω(n)
@@ -37,4 +40,7 @@ def bubble_sort_v2(array):
 
     return None
 
-print("After V2: ", bubble_sort_v2(not_sorted_array.copy()))
+not_sorted_array_v2 = not_sorted_array.copy()
+bubble_sort_v2(not_sorted_array_v2)
+
+print("After V2: ", not_sorted_array_v2)
