@@ -22,7 +22,7 @@ print("After V1: ", not_sorted_array_v1)
 
 
 # Time Complexity:      θ(n ** 2), Ω(n)
-# Space Complexity :    O(1)
+# Space Complexity:    O(1)
 def bubble_sort_v2(array):
     # We did some optimization of with checking if array is already done
     n = len(array)
