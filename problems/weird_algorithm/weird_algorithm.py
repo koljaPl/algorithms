@@ -1,13 +1,20 @@
-n = int(input())
-ans = []
-ans.append(n)
+import sys
+# sys.setrecursionlimit(200000)
 
-while n != 1:
-    if n % 2 == 0:
-        n /= 2
-        ans.append(int(n))
-    else:
-        n = n * 3 + 1
-        ans.append(int(n))
+input = sys.stdin.readline
 
-print(*ans)
+def main():
+    n = int(input())
+    res = [n]
+
+    while n != 1:
+        if n % 2 == 0:
+            n //= 2
+            res.append(int(n))
+        else:
+            n = (n * 3) + 1
+            res.append(int(n))
+
+    print(*res)
+
+main()
