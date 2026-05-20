@@ -3,7 +3,7 @@
 not_sorted_array = [2, 8, 5, 3, 9, 4, 1]
 print("Before:   ", not_sorted_array)
 
-# Time Complexity:      θ(n ** 2)
+# Time Complexity:      O(n ** 2)
 # Space Complexity :    O(1)
 def bubble_sort_v1(array):
     n = len(array)
@@ -15,11 +15,14 @@ def bubble_sort_v1(array):
 
     return None
 
-print("After V1: ", bubble_sort_v1(not_sorted_array.copy()))
+not_sorted_array_v1 = not_sorted_array.copy()
+bubble_sort_v1(not_sorted_array_v1)
+
+print("After V1: ", not_sorted_array_v1)
 
 
 # Time Complexity:      θ(n ** 2), Ω(n)
-# Space Complexity :    O(1)
+# Space Complexity:    O(1)
 def bubble_sort_v2(array):
     # We did some optimization of with checking if array is already done
     n = len(array)
@@ -37,4 +40,7 @@ def bubble_sort_v2(array):
 
     return None
 
-print("After V2: ", bubble_sort_v2(not_sorted_array.copy()))
+not_sorted_array_v2 = not_sorted_array.copy()
+bubble_sort_v2(not_sorted_array_v2)
+
+print("After V2: ", not_sorted_array_v2)

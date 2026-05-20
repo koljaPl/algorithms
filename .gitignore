@@ -1,0 +1,6 @@
+.venv
+.idea
+.pytest_cache
+__pycache__
+/solving_process/__pycache__
+CMakeLists.txt
