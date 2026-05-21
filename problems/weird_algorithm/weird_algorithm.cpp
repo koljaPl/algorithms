@@ -1,9 +1,14 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
+using ll = long long;
 
 int main() {
-    long long n;
-    std::cin >> n;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    ll n, m;
+    cin >> n;
+
     cout << n << " ";
 
     while (n != 1) {
@@ -15,4 +20,6 @@ int main() {
             cout << n << " ";
         }
     }
+
+    return 0;
 }
