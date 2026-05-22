@@ -99,3 +99,27 @@ def dijkstra_with_path(n, adj, start):
                 heapq.heappush(pq, (new_dist, v))
 
     return dist, parent
+
+# Or more ioi version of Dijkstra:
+def dijkstra_ioi(n, adj, start):
+    INF = 10 ** 18 + 1
+
+    dist = [INF] * n
+    dist[start] = 0
+
+    pq = [(0, start)]
+
+    while pq:
+        cur_dist, u = heapq.heappop(pq)
+
+        if cur_dist != dist[u]:
+            continue
+
+        for v, w in adj[u]:
+            new_dist = cur_dist + w
+
+            if new_dist < dist[v]:
+                dist[v] = new_dist
+                heapq.heappush(pq, (new_dist, v))
+
+    return dist
