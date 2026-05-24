@@ -15,10 +15,11 @@ def dijkstra(n, adj, start):
     dist = [INF] * n
     dist[start] = 0
 
-    pq = [(0, start)]  # (distance, node)
+    # Min-Heap / Priority Queue
+    priority_queue = [(0, start)]  # (distance, node)
 
-    while pq:
-        cur_dist, u = heapq.heappop(pq)
+    while priority_queue:
+        cur_dist, u = heapq.heappop(priority_queue)
 
         # outdated entry
         if cur_dist > dist[u]:
@@ -29,7 +30,7 @@ def dijkstra(n, adj, start):
 
             if new_dist < dist[v]:
                 dist[v] = new_dist
-                heapq.heappush(pq, (new_dist, v))
+                heapq.heappush(priority_queue, (new_dist, v))
 
     return dist
 
@@ -53,7 +54,7 @@ def dijkstra(n, adj, start):
 # adj = [[] for _ in range(n)]
 #
 # for _ in range(m):
-#     u, v, w = map(int, input().split())
+#     u, v, w = map(int, input().split()) # From / To / Cost
 #
 #     u -= 1
 #     v -= 1
@@ -67,7 +68,7 @@ def dijkstra(n, adj, start):
 # adj = [[] for _ in range(n)]
 #
 # for _ in range(m):
-#     u, v, w = map(int, input().split())
+#     u, v, w = map(int, input().split()) # From / To / Cost
 #
 #     u -= 1
 #     v -= 1
@@ -82,10 +83,11 @@ def dijkstra_with_path(n, adj, start):
 
     dist[start] = 0
 
-    pq = [(0, start)]
+    # Min-Heap / Priority Queue
+    priority_queue = [(0, start)]
 
-    while pq:
-        cur_dist, u = heapq.heappop(pq)
+    while priority_queue:
+        cur_dist, u = heapq.heappop(priority_queue)
 
         if cur_dist > dist[u]:
             continue
@@ -96,22 +98,27 @@ def dijkstra_with_path(n, adj, start):
             if new_dist < dist[v]:
                 dist[v] = new_dist
                 parent[v] = u
-                heapq.heappush(pq, (new_dist, v))
+                heapq.heappush(priority_queue, (new_dist, v))
 
     return dist, parent
 
-# Or more ioi version of Dijkstra:
+# Or more IOI version of Dijkstra:
 def dijkstra_ioi(n, adj, start):
     INF = 10 ** 18 + 1
 
     dist = [INF] * n
     dist[start] = 0
 
-    pq = [(0, start)]
+    # Min-Heap / Priority Queue
+    priority_queue = [(0, start)]
 
-    while pq:
-        cur_dist, u = heapq.heappop(pq)
+    while priority_queue:
+        cur_dist, u = heapq.heappop(priority_queue)
 
+        # Это то же самое что и > потому что мы используем Heap,
+        # а у Heap есть особенность делать только меньшее число наверх
+        # тоесть: разрешаем только единственную актуальную версию
+        # что значит что мы утверждаем что точно есть 1 правильный путь
         if cur_dist != dist[u]:
             continue
 
@@ -120,6 +127,6 @@ def dijkstra_ioi(n, adj, start):
 
             if new_dist < dist[v]:
                 dist[v] = new_dist
-                heapq.heappush(pq, (new_dist, v))
+                heapq.heappush(priority_queue, (new_dist, v))
 
     return dist
