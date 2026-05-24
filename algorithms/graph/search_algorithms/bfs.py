@@ -1,6 +1,6 @@
 from collections import deque
 
-# Breadth First Search algorithm:
+# Breadth First Search Algorithm:
 # Time Complexity:
 # O(V+E), где:
 # V — количество вершин,
