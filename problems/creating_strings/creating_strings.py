@@ -4,28 +4,35 @@ import sys
 input = sys.stdin.readline
 
 def main():
-    s = list(input().strip())
+    s = sorted(list(input().strip()))
     n = len(s)
 
     used = [False] * n
-    res = set()
+    res = []
 
-    def backtracking(curr_s, length):
-        if length == n:
-            res.add(curr_s)
+    def backtracking(curr):
+        if len(curr) == n:
+            res.append("".join(curr))
             return
 
         for i in range(n):
-            if not used[i]:
-                used[i] = True
-                backtracking(curr_s + s[i], length + 1)
-                used[i] = False
+            if used[i]:
+                continue
+
+            if i > 0 and s[i] == s[i - 1] and not used[i - 1]:
+                continue
+
+            used[i] = True
+            curr.append(s[i])
+
+            backtracking(curr)
+
+            curr.pop()
+            used[i] = False
 
         return
 
-    backtracking("", 0)
-
-    res = sorted(list(res))
+    backtracking([])
 
     print(len(res))
 
