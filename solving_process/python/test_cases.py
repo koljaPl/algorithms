@@ -8,6 +8,7 @@ def main():
 
     for _ in range(t):
         # data = list(map(int, input().split()))
+        # s = input().strip()
 
         continue
 
