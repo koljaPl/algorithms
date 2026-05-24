@@ -11,7 +11,7 @@ def selection_sort(array):
     for i in range(n):
         min_index = i
 
-        for j in range(i+1, n):
+        for j in range(i + 1, n):
             if array[j] < array[min_index]:
                 min_index = j
 
@@ -21,3 +21,8 @@ def selection_sort(array):
     return array
 
 print("After:  ", selection_sort(not_sorted_array.copy()))
+
+# Idea:
+# Находим минимальный элемент в неотсортированной части массива
+# Меняем его местами с первым элементом этой части
+# Сдвигаем границу отсортированной части вправо

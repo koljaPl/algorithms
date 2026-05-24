@@ -163,6 +163,28 @@ class IterativeSegmentTree:
 #     merge=math.gcd,
 #     identity=0
 # )
+#
+# and then full code:
+#
+# n, q = map(int, input().split())
+# arr = list(map(int, input().split()))
+#
+# st = SegmentTree(arr, lambda a, b: a + b, 0)
+#
+# for _ in range(q):
+#     t = input().split()
+#
+#     if t[0] == "query":
+#         l = int(t[1])
+#         r = int(t[2])
+#
+#         print(st.query(l, r))
+#
+#     else:
+#         idx = int(t[1])
+#         val = int(t[2])
+#
+#         st.update(idx, val)
 
 # When to use:
 # Он очень часто встречается в задачах типа:
