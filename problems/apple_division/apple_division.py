@@ -8,14 +8,18 @@ def main():
     total = sum(list_p)
     res = float('inf')
 
-    for mask in range(1 << n):
-        subset_sum = 0
+    def dfs(i, current_sum):
+        nonlocal res
 
-        for i in range(n):
-            if mask & (1 << i):
-                subset_sum += list_p[i]
+        if i == n:
+            res = min(res, abs(total - 2 * current_sum))
+            return
 
-        res = min(res, abs(total - 2 * subset_sum))
+        dfs(i + 1, current_sum + list_p[i])
+
+        dfs(i + 1, current_sum)
+
+    dfs(0, 0)
 
     print(res)
 
