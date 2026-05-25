@@ -2,12 +2,12 @@ from collections import deque
 
 # Breadth First Search Algorithm:
 # Time Complexity:
-# O(V+E), где:
+# O( V + E ), где:
 # V — количество вершин,
 # E — количество рёбер.
 #
 # Space Complexity:
-# Memory: O(V)
+# Memory: O( V )
 
 def bfs_on_graph(graph, start):
     n = len(graph)
