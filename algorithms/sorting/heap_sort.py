@@ -19,6 +19,7 @@ def heap_sort(array):
 # Time: O(n)
 def build_max_heap(array):
     n = len(array)
+
     for i in range(n // 2 - 1, -1, -1):
         heapify(array, i, n)
 

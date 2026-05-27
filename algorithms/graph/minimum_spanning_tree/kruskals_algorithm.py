@@ -16,6 +16,7 @@ class DSU:
     def find(self, v):
         if self.parents[v] != v:
             self.parents[v] = self.find(self.parents[v])  # path compression
+
         return self.parents[v]
 
     def union(self, u, v):
@@ -34,7 +35,7 @@ class DSU:
 
 def kruskal_algorithm(n, edges):
     """
-    n: number of vertices (0..n-1)
+    n: number of vertices (0...n-1)
     edges: list of (weight, u, v)
     return: (mst_weight, mst_edges)
     """
