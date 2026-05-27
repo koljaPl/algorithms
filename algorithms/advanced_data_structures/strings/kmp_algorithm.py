@@ -1,4 +1,4 @@
-# KMP (Knuth–Morris–Pratt) Algorithm:
+# KMP (Knuth-Morris-Pratt) Algorithm:
 # Time Complexity:
 # building:     O(m)
 # searching:    O(n)
