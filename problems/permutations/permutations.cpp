@@ -11,10 +11,8 @@ int main() {
 
     if (n == 1) {
         cout << 1 << "\n";
-        return 0;
     } else if (n < 4) {
         cout << "NO SOLUTION" << "\n";
-        return 0;
     } else {
         vector<int> res;
         
@@ -29,7 +27,6 @@ int main() {
         for (int num : res) {
             std::cout << num << " "; 
         }
-        return 0;
     }
 
     return 0;
