@@ -6,7 +6,7 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    ll n = 0;
+    int n = 0;
     cin >> n;
 
     vector<string> gray = {""};
