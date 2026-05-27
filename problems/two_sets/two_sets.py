@@ -51,5 +51,4 @@ def main():
     print(len(list_b))
     print(*list_b)
 
-
 main()
