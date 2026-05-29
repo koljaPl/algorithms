@@ -61,5 +61,3 @@ def bfs_on_grid(grid, start_x, start_y):
 # “распространение”
 # “grid”
 # “каждый шаг = 1 стоимость”
-
-
