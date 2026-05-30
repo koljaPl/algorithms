@@ -151,7 +151,7 @@ class AhoCorasick:
 # 5. DP по автомату
 # 6. Count occurrences of each pattern
 #
-# Также в олимпиадных задачах
+# Также в олимпиадных задачах:
 #
 # Когда есть:
 #
