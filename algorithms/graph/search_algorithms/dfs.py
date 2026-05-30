@@ -2,12 +2,12 @@
 
 # Depth First Search Algorithm:
 # Time Complexity:
-# O(V+E), где:
+# O( V + E ), где:
 # V — количество вершин,
 # E — количество рёбер.
 #
 # Space Complexity:
-# Memory: O(V)
+# Memory: O( V )
 
 def dfs_recursive(graph, start, visited):
     visited[start] = True
