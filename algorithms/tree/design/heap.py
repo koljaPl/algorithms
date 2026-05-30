@@ -19,7 +19,6 @@ def get_left(i):
 def get_right(i):
     return 2 * i + 2
 
-
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -174,6 +173,33 @@ class MaxHeap:
 
     def __repr__(self):
         return str(self.heap)
+
+# Intuition / Idea:
+# "Сделать так, чтобы самый важный элемент ( обычно самый дешевый/дорогой ) всегда находился сверху"
+#
+# Основная идея:
+# Heap хранит элементы так, чтобы выполнялось правило:
+#
+# Для каждого узла:
+#
+# родитель <= дети
+# ( для Min Heap )
+#
+# Например:
+#
+#         1
+#       /   \
+#      2     3
+#     / \   / \
+#    7  5 10  8
+#
+# Тут:
+#
+# 1 <= 2, 3
+# 2 <= 7, 5
+# 3 <= 10, 8
+#
+# Поэтому минимум всегда находится в корне.
 
 # Tss, there is something cool about max heap, there is how we do this in Python:
 
