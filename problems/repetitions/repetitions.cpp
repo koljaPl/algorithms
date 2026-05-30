@@ -11,7 +11,6 @@ int main() {
 
     ll res = 1;
     ll curr = 1;
-
     for (ll i = 1; i < dna.size(); i++) {
         if (dna[i] == dna[i - 1]) {
             curr++;
