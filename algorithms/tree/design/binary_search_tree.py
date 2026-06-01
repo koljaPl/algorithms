@@ -1,9 +1,20 @@
+# Binary Search Tree:
+# Time Complexity:
+# insert():     Average: O(log n); Worst: O(n);
+# search():     Average: O(log n); Worst: O(n)
+# delete():     Average: O(log n); Worst: O(n)
+#
+# Space Complexity:
+# Memory:       O(n)
+# insert():     O(1)
+# search():     O(1)
+# delete():     iterative: O(1); recursive (у тебя): O(h)
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
-
 
 class BinarySearchTree:
     def __init__(self):
@@ -72,3 +83,21 @@ class BinarySearchTree:
             node.right = self._delete_recursive(node.right, successor.val)
 
         return node
+
+# Intuition / Idea:
+# BST — это структура данных, где для каждого узла выполняется правило:
+#
+# все значения в левом поддереве меньше
+# все значения в правом поддереве больше
+#
+# То есть дерево “само сортирует” данные при вставке
+
+# Интуиция (как это думать)
+#
+# Представь телефонную книгу:
+#
+# если фамилия меньше -> идёшь влево
+# если больше -> вправо
+# и так пока не найдёшь нужную
+#
+# Это “логарифмический поиск” в структуре, которая динамически растёт.
