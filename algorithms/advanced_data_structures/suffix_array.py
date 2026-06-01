@@ -125,7 +125,79 @@ def find(s, sa, pattern):
 
     return max(0, end - start + 1)
 
+# sa = SuffixArray(s)
+#
+# # поиск подстроки
+# count = find(s, sa.sa, pattern)
+#
+# # LCP
+# lcp = sa.lcp
+#
+# for i in sa.sa:
+#     print(s[i:])
+#
+# Поиск подстроки:
+# def lower_bound(s, sa, pattern):
+#     n = len(sa)
+#     l, r = 0, n
+#
+#     while l < r:
+#         m = (l + r) // 2
+#         i = sa[m]
+#
+#         if s[i:i+len(pattern)] < pattern:
+#             l = m + 1
+#         else:
+#             r = m
+#
+#     return l
+#
+# def upper_bound(s, sa, pattern):
+#     n = len(sa)
+#     l, r = 0, n
+#
+#     while l < r:
+#         m = (l + r) // 2
+#         i = sa[m]
+#
+#         if s[i:i+len(pattern)] <= pattern:
+#             l = m + 1
+#         else:
+#             r = m
+#
+#     return l
+#
+# If it exist:
+# def exists(s, sa, pattern):
+#     n = len(s)
+#     idx = lower_bound(s, sa, pattern)
+#
+#     if idx == len(sa):
+#         return False
+#
+#     i = sa[idx]
+#     return s[i:i+len(pattern)] == pattern
+#
+# Сколько раз встречается pattern:
+# def count_occurrences(s, sa, pattern):
+#     l = lower_bound(s, sa, pattern)
+#     r = upper_bound(s, sa, pattern)
+#     return r - l
+#
+# s = "banana"
+# sa = SuffixArray(s).sa
+#
+# print(count_occurrences(s, sa, "ana"))
+#
+# def find_positions(s, sa, pattern):
+#     l = lower_bound(s, sa, pattern)
+#     r = upper_bound(s, sa, pattern)
+#
+#     return sorted(sa[l:r])
+#
+
 # Intuition / Idea:
+# Suffix Array (SA) — это массив индексов всех суффиксов строки, отсортированных лексикографически.
 # Suffix array — это многократная сортировка "двухполовинных ключей" где каждый шаг
 # (s[i..i+k], s[i+k..i+2k]) и мы постепенно “учим” структуру строки всё глубже.
 #
@@ -151,7 +223,7 @@ def find(s, sa, pattern):
 # 1. Проверка подстроки
 #           Проверить, есть ли pattern в s за O( |pattern| log n ) (через бинарный поиск по suffix array)
 # 2. Количество вхождений
-#           Сколько раз встречается подстрока → тоже через два бинпоиска
+#           Сколько раз встречается подстрока → тоже через два бинарных поиска
 # 3. LCP (Longest Common Prefix)
 #       Можно построить LCP array и решать:
 #           1. повторяющиеся подстроки
@@ -164,7 +236,7 @@ def find(s, sa, pattern):
 #       много запросов
 #       большой текст
 # 2. Кол-во различных подстрок
-#       answer = n*(n+1)/2 - sum(LCP)
+#       answer = n * ( n + 1 ) / 2 - sum(LCP)
 # 3. Longest repeated substring
 #       максимум LCP
 # 4. Две строки
