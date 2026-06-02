@@ -1,4 +1,4 @@
-# Queue/Deque:
+# Queue / Deque:
 # Time Complexity:
 # Enqueue:      O(1)
 # Dequeue:      O(1)

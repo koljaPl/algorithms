@@ -17,7 +17,7 @@ from collections import defaultdict
 # Space Complexity:
 # Memory:
 # Worst Case:
-# O(N * L * R)
+# O( N * L * R )
 # Where:
 # N is the number of keys/strings
 # L is the average or maximum length of a string
@@ -26,7 +26,7 @@ from collections import defaultdict
 # but, it's more true:
 #
 # Space: O(total characters inserted)
-# Worst-case: O(N * L)
+# Worst-case: O( N * L )
 #
 # or we also can say:
 # O( total number of nodes * R )
