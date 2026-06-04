@@ -41,7 +41,7 @@ class FenwickTree:
 # How to use:
 #
 # # creating
-# ft = FenwickTree(n
+# ft = FenwickTree(n)
 #
 # for i in range(1, n + 1):
 #     ft.add(i, a[i])
@@ -69,10 +69,10 @@ class FenwickTree:
 #
 # Обычный массив:
 # update: O(1)
-# prefix sum: O(n) ❌
+# prefix sum: O(n)
 #
 # Prefix sums массив:
-# update: O(n) ❌
+# update: O(n)
 # query: O(1)
 #
 # Fenwick Tree — компромисс:
@@ -92,5 +92,5 @@ class FenwickTree:
 # 2. Частоты / подсчёт количества элементов
 # 3. Инверсии (очень важная классика)
 #           Сколько пар (i < j), где a[i] > a[j]
-# 4. “Сколько элементов в диапазоне значений”
+# 4. "Сколько элементов в диапазоне значений"
 # 5. нельзя заранее обработать все запросы
