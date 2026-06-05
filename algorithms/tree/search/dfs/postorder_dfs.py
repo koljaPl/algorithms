@@ -1,7 +1,6 @@
 # Post-order Depth First Search
 from algorithms.tree.design.tree import root, TreeNode
 
-
 # Time Complexity:      O(n)
 # Space Complexity :    O(n)
 def postorder_dfs(result: list, root):
