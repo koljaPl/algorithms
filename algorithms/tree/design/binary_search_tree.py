@@ -31,12 +31,16 @@ class BinarySearchTree:
                 if curr.left is None:
                     curr.left = TreeNode(value)
                     break
+
                 curr = curr.left
+
             elif value > curr.val:
                 if curr.right is None:
                     curr.right = TreeNode(value)
                     break
+
                 curr = curr.right
+
             else:
                 break
 
@@ -90,7 +94,7 @@ class BinarySearchTree:
 # все значения в левом поддереве меньше
 # все значения в правом поддереве больше
 #
-# То есть дерево “само сортирует” данные при вставке
+# То есть дерево "само сортирует" данные при вставке
 
 # Интуиция (как это думать)
 #
@@ -100,4 +104,4 @@ class BinarySearchTree:
 # если больше -> вправо
 # и так пока не найдёшь нужную
 #
-# Это “логарифмический поиск” в структуре, которая динамически растёт.
+# Это "логарифмический поиск" в структуре, которая динамически растёт.
