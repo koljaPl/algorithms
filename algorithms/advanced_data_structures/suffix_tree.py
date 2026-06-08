@@ -160,7 +160,6 @@ class SuffixTree:
 #
 #     return max_depth, max_start_index
 #
-#
 
 # Идея как у Suffix Array, но Tree.
 # Скорее всего ты это не будишь использовать, намного более часто ты будешь использовать:
