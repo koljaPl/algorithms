@@ -1,6 +1,5 @@
 # Red-Black Tree's:
-# Height:     O( 2 * log2 (n + 1) ) ( or
-#                                      h ≤ O( 2 * log2 (n + 1) )
+# Height:     O( 2 * log2 (n + 1) ) ( or h ≤ O( 2 * log2 (n + 1) )
 #
 # Time Complexity:
 # Search:     O(log n)
@@ -310,4 +309,5 @@ class RedBlackTree:
 # 2. Dynamic median
 # 3. Intervals + queries
 # 4. Online queries
+#
 # But probobly you gonna used behind the scene

@@ -20,7 +20,7 @@ int main_v1() {
 }
 
 // Slightly faster than the set version, but uses more memory in the worst case (if all numbers are distinct)
-int main_v2() {
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 

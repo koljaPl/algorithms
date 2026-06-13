@@ -3,24 +3,7 @@ using namespace std;
 using ll = long long;
 
 void solve() {
-    ll n, m;
-    cin >> n >> m;
-
-    ll sum = n + m;
-    ll diff = abs(n - m);
-    ll mult = n * m;
-    ll div = n / m;
-    ll mod = n % m;
-
-    n++;
-    m--;
-
-    vector<ll> arr = {sum, diff, mult, div, mod, n, m};
-
-    for (auto value : arr) {
-        cout << value << " ";
-    }
-    cout << "\n";
+    return;
 }
 
 int main() {

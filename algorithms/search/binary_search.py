@@ -4,7 +4,7 @@ array = [num for num in range(100)]
 
 # Time Complexity:      O(log n)
 # Space Complexity :    O(1)
-# Number of Steps:      O(log)
+# Number of Steps:      O(log n)
 def binary_search(array, target):
     left = 0
     right = len(array) - 1
