@@ -10,7 +10,7 @@ from collections import defaultdict
 # count_prefix()    O(L)
 # Where L is length of word (or prefix)
 #
-# Acces to nodes letters:
+# Access to nodes letters:
 # TrieNode:                     amortized O(1)
 # TrieNodeMemoryOptimized:      Real O(1) (isn't it cool, huh?)
 #
@@ -121,7 +121,7 @@ class Trie:
         return node.prefix_count
 
 # Intuition / Idea:
-# Trie = дерево префиксов, где строки “склеиваются” по общим началам, и поиск становится очень быстрым по длине слова.
+# Trie = дерево префиксов, где строки "склеиваются" по общим началам, и поиск становится очень быстрым по длине слова.
 #
 # Trie — это дерево, где:
 # каждая вершина = символ
@@ -149,3 +149,4 @@ class Trie:
 # 4. Unique Prefix
 #          - Найти минимальный уникальный префикс каждого слова.
 # 5. Lexicographical traversal
+# 6. Aho-Corasick
