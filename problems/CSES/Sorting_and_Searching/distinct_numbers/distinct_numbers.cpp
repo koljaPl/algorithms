@@ -17,6 +17,8 @@ int main_v1() {
     }
 
     cout << s.size() << "\n";
+
+    return 0;
 }
 
 // Slightly faster than the set version, but uses more memory in the worst case (if all numbers are distinct)
