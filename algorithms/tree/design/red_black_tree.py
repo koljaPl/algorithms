@@ -290,7 +290,7 @@ class RedBlackTree:
 #
 # Where it is used:
 # This is not really intended for problems of the Codeforces or AtCoder variety, but is more of a
-# high-level algorithm. We use it behind the scenes because of its ability to achieve an exact
+# low-level algorithm. We use it behind the scenes because of its ability to achieve an exact
 # O(log) time complexity.
 #
 # But we can use it in types of problems like:
