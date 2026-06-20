@@ -21,7 +21,7 @@ int main() {
         res += coin;
     }
 
-    cout << res;
+    cout << res << '\n';
 
     return 0;
 }
