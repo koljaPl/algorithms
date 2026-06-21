@@ -17,7 +17,7 @@ int main() {
     ll res = 0;
 
     for (ll right = 0; right < n; right++) {
-        while (seen.contains(ks[right])) {
+        while (seen.count(ks[right])) {
             seen.erase(ks[left]);
             left++;
         }
