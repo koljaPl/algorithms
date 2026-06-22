@@ -1,6 +1,6 @@
 from collections import deque
 
-# Red-Black Tree's:
+# AVL Tree:
 # Height of AVL Tree:
 # O( 1,44 * log2(n) )
 #
