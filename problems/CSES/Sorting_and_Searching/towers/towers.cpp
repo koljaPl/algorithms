@@ -14,7 +14,7 @@ int main() {
 
     vector<ll> tops;
     for (ll cube : cubes) {
-        size_t pos = upper_bound(tops.begin(), tops.end(), cube) - tops.begin();;
+        size_t pos = upper_bound(tops.begin(), tops.end(), cube) - tops.begin();
 
         if (pos == tops.size()) {
             tops.push_back(cube);
