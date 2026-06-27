@@ -20,7 +20,8 @@ int main() {
     }
 
     ll res = 1;
-    for (const auto& [key, value] : counts) res = (res * (value + 1)) % MOD;
+    for (const auto& [key, value] : counts) 
+        res = (res * (value + 1)) % MOD;
 
     cout << (res - 1 + MOD) % MOD << "\n";
 

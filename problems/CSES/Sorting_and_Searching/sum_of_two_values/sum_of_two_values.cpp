@@ -7,8 +7,8 @@ int main() {
     cin.tie(nullptr);
 
     int n;
-    long long x;
-    if (!(cin >> n >> x)) return 0;
+    ll x;
+    cin >> n >> x;
 
     vector<pair<int, int>> a(n);
     for (int i = 0; i < n; i++) {
@@ -22,7 +22,7 @@ int main() {
     int right = n - 1;
 
     while (left < right) {
-        long long current_sum = (long long)a[left].first + a[right].first;
+        ll current_sum = (ll)a[left].first + a[right].first;
 
         if (current_sum == x) {
             cout << a[left].second << " " << a[right].second << "\n";

@@ -10,7 +10,8 @@ int main() {
     cin >> n >> x;
 
     vector<int> weights(n);
-    for (int i = 0; i < n; i++) cin >> weights[i];
+    for (int i = 0; i < n; i++)
+        cin >> weights[i];
 
     sort(weights.begin(), weights.end());
 
