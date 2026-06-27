@@ -10,7 +10,9 @@ int main() {
     cin >> n;
     
     vector<ll> coins(n);
-    for (int i = 0; i < n; ++i) cin >> coins[i];
+    
+    for (int i = 0; i < n; ++i) 
+        cin >> coins[i];
 
     sort(coins.begin(), coins.end());
 
