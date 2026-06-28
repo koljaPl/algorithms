@@ -60,7 +60,8 @@ int main() {
     
     cout << room_count << "\n";
 
-    for (ll pos : allocation_example) cout << pos << " ";
+    for (ll pos : allocation_example) 
+        cout << pos << " ";
     cout << "\n";
 
     return 0;
