@@ -27,6 +27,8 @@ const int MOD = 1e9 + 7;
 // Macros
 // ======================
 
+#define pb push_back
+
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 
