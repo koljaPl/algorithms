@@ -10,12 +10,14 @@ int main() {
     int n;
     ll t;
     cin >> n >> t;
+
     ll best_machine = 0;
 
     vector<ll> machines(n);
     for (int i = 0; i < n; i++) {
         ll x;
         cin >> x;
+
         machines[i] = x;
         best_machine = max(best_machine, x);
     }
