@@ -265,7 +265,7 @@ class RedBlackTree:
 
         v.parent = u.parent
 
-        # O(h) = O(log n) for RB trees
+    # O(h) = O(log n) for RB trees
     def minimum(self, node):
         while node.left != self.NIL:
             node = node.left
