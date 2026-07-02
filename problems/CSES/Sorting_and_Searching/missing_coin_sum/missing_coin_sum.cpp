@@ -18,7 +18,8 @@ int main() {
 
     ll res = 1;
     for (ll coin : coins) {
-        if (coin > res) break;
+        if (coin > res) 
+            break;
 
         res += coin;
     }
