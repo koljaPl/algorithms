@@ -14,6 +14,7 @@ int main() {
     vector<ll> arr;
     ll max_value = -INF;
     ll total_sum = 0;
+    
     for (int i = 0; i < n; i++) {
         ll x;
         cin >> x;
