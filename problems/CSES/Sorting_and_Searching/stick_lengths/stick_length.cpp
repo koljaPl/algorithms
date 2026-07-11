@@ -8,6 +8,7 @@ int main() {
 
     int n; cin >> n;
     vector<ll> lengths(n);
+
     for (int i = 0; i < n; i++) cin >> lengths[i];
     sort(lengths.begin(), lengths.end());
 
