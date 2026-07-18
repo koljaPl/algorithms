@@ -2,7 +2,9 @@
 using namespace std;
 using ll = long long;
 
-int main() {
+const int MOD = 1e9 + 7;
+
+int main_v1() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
@@ -20,8 +22,8 @@ int main() {
             if (curr_sum >= coin) {
                 dp[curr_sum] += dp[curr_sum - coin];
 
-                if (dp[curr_sum] >= 1e9 + 7) {
-                    dp[curr_sum] -= 1e9 + 7;
+                if (dp[curr_sum] >= MOD) {
+                    dp[curr_sum] -= MOD;
                 }
             }
         }
@@ -30,4 +32,27 @@ int main() {
     cout << dp[target] << "\n";
 
     return 0;
+}
+
+int main() {
+    int n, x;
+    cin >> n >> x;
+
+    vector<int> c(n);
+    for (int j = 0; j < n; ++j) {
+        cin >> c[j];
+    }
+
+    vector<int> ways(x + 1);
+    ways[0] = 1;
+    for (int i = 1; i <= x; ++i) {
+        ways[i] = 0;
+        for (int j = 0; j < n; ++j) {
+            if (i - c[j] >= 0) {
+                ways[i] = (ways[i] + ways[i - c[j]]) % MOD;
+            }
+        }
+    }
+
+    cout << ways[x] << "\n";
 }
