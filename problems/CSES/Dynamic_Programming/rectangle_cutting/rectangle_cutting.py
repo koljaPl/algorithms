@@ -2,7 +2,6 @@ import sys
 
 input = sys.stdin.readline
 
-
 def main():
     h, w = map(int, input().split())
     n = max(h, w)
