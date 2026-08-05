@@ -35,12 +35,15 @@ int main_v1() {
 }
 
 int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int n, x;
     cin >> n >> x;
 
-    vector<int> c(n);
+    vector<int> coins(n);
     for (int j = 0; j < n; ++j) {
-        cin >> c[j];
+        cin >> coins[j];
     }
 
     vector<int> ways(x + 1);
@@ -48,11 +51,13 @@ int main() {
     for (int i = 1; i <= x; ++i) {
         ways[i] = 0;
         for (int j = 0; j < n; ++j) {
-            if (i - c[j] >= 0) {
-                ways[i] = (ways[i] + ways[i - c[j]]) % MOD;
+            if (i - coins[j] >= 0) {
+                ways[i] = (ways[i] + ways[i - coins[j]]) % MOD;
             }
         }
     }
 
     cout << ways[x] << "\n";
+
+    return 0;
 }
