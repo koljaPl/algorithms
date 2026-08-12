@@ -9,23 +9,25 @@ int main() {
     int n;
     cin >> n;
 
-    vector<ll> cnt(n, 0);
-    cnt[0] = 1;
+    vector<ll> arr(n);
+    for (int i = 0; i < n; i++) cin >> arr[i];
+
+    vector<ll> count(n, 0);
+    count[0] = 1;
 
     ll pref = 0;
     ll res = 0;
 
-    for (int i = 0; i < n; i++) {
-        ll x;
-        cin >> x;
-        
-        pref = ((pref + x) % n + n) % n;
+    for (ll x : arr) {
+        pref = (pref + x) % n;
 
-        res += cnt[pref];
-        cnt[pref] += 1;
+        if (pref < 0) pref += n;
+
+        res += count[pref];
+        count[pref]++;
     }
 
-    cout << res;
+    cout << res << "\n";
 
     return 0;
 }

@@ -71,6 +71,6 @@ class Queue:
     def peak(self):
         return self.data.peek_left()
 
-# Nothing out of the ordinary—it’s a standard list with FIFO by default,
+# Nothing out of the ordinary - it’s a standard list with FIFO by default,
 # although you can do whatever you like with a deque via collections.
 # A VERY HANDY STRUCTURE!

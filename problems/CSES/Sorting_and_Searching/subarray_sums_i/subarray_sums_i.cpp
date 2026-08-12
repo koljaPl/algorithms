@@ -9,12 +9,12 @@ int main() {
     int n, target;
     cin >> n >> target;
 
-    vector<ll> arr(n);
+    vector<int> arr(n);
     for (int i = 0; i < n; i++) cin >> arr[i];
 
-    ll sum = 0;
-    ll res = 0;
-
+    int sum = 0;
+    int res = 0;
+    
     int left = 0;
 
     for (int right = 0; right < n; right++) {
@@ -25,8 +25,9 @@ int main() {
             left++;
         }
 
-        if (sum == target)
-            res += 1;
+        if (sum == target) {
+            res++;
+        }
     }
 
     cout << res << "\n";
