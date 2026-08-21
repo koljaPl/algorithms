@@ -60,7 +60,7 @@ public:
     }
 };
 
-int main() {
+int main_v1() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
@@ -125,6 +125,41 @@ int main() {
     }
 
     cout << result << '\n';
+
+    return 0;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n, k;
+    cin >> n >> k;
+
+    vector<pair<int, int>> movies(n);
+    for (int i = 0; i < n; i++)
+        cin >> movies[i].second >> movies[i].first;
+
+    sort(movies.begin(), movies.end());
+
+    multiset<int> ends;
+    for (int i = 0; i < k; i++)
+        ends.insert(0);
+
+    int res = 0;
+    for (auto [finish, start] : movies) {
+        auto it = ends.upper_bound(start);
+
+        if (it == ends.begin())
+            continue;
+
+        it--;
+        ends.erase(it);
+        ends.insert(finish);
+        res++;
+    }
+
+    cout << res << '\n';
 
     return 0;
 }
