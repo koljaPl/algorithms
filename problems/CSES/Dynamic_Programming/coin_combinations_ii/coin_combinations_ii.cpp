@@ -35,6 +35,9 @@ int main_v1() {
 }
 
 int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int n, x;
     cin >> n >> x;
 
@@ -47,9 +50,14 @@ int main() {
     ways[0] = 1;
     for (int j = 0; j < n; ++j) {
         for (int i = c[j]; i <= x; ++i) {
-            ways[i] = (ways[i - c[j]] + ways[i]) % MOD;
+            ways[i] = (ways[i - c[j]] + ways[i]);
+
+            if (ways[i] >= MOD)
+                ways[i] -= MOD;
         }
     }
 
     cout << ways[x] << "\n";
+
+    return 0;
 }
