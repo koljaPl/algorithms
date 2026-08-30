@@ -2,7 +2,6 @@
 using namespace std;
 using ll = long long;
 
-
 int n, m;
 
 vector<vector<int>> graph;
