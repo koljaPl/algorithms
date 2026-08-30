@@ -33,7 +33,6 @@ bool dfs(int u, int p) {
     return false;
 }
 
-
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
