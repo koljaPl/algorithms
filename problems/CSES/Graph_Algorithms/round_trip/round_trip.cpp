@@ -2,7 +2,6 @@
 using namespace std;
 using ll = long long;
 
-
 int n, m;
 
 vector<vector<int>> graph;
@@ -33,7 +32,6 @@ bool dfs(int u, int p) {
 
     return false;
 }
-
 
 int main() {
     ios::sync_with_stdio(false);
