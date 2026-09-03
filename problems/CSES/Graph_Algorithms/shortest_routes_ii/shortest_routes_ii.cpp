@@ -26,8 +26,8 @@ int main() {
 
         cin >> a >> b >> c;
 
-        --a;
-        --b;
+        a--;
+        b--;
 
         dist[a][b] = min(dist[a][b], c);
         dist[b][a] = min(dist[b][a], c);
@@ -48,8 +48,8 @@ int main() {
         int a, b;
         cin >> a >> b;
 
-        --a;
-        --b;
+        a--;
+        b--;
 
         if (dist[a][b] == INF) {
             cout << -1 << '\n';
