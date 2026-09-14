@@ -15,6 +15,9 @@ using pll = pair<ll, ll>;
 using vi = vector<int>;
 using vll = vector<ll>;
 
+#define f first
+#define s second
+
 // ======================
 // Constants
 // ======================
