@@ -18,9 +18,7 @@ int main() {
     vector<int> res(n, 0);
 
     for (int start = 0; start < n; start++) {
-        if (state[start] != 0) {
-            continue;
-        }
+        if (state[start] != 0) continue;
 
         vector<int> path;
 
@@ -38,9 +36,7 @@ int main() {
 
             int cycle_start = 0;
 
-            while (path[cycle_start] != v) {
-                cycle_start++;
-            }
+            while (path[cycle_start] != v) cycle_start++;
 
             int cycle_length = path.size() - cycle_start;
 
@@ -49,17 +45,13 @@ int main() {
             }
 
             for (int i = cycle_start - 1; i >= 0; i--) {
-
                 int node = path[i];
-
                 res[node] = res[to[node]] + 1;
             }
         }
         else {
             for (int i = path.size() - 1; i >= 0; i--) {
-
                 int node = path[i];
-
                 res[node] = res[to[node]] + 1;
             }
         }
@@ -72,6 +64,7 @@ int main() {
     for (int x : res) {
         cout << x << " ";
     }
-
     cout << '\n';
+
+    return 0;
 }
