@@ -23,7 +23,7 @@ int main() {
         }
     }
 
-    cout << res << endl;
+    cout << res << "\n";
 
     return 0;
 }
