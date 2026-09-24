@@ -15,15 +15,15 @@ int main() {
     vector<ll> cap;
 
     auto add_edge = [&](int u, int v, ll c) {
-        adj[u].push_back((int)to.size());
+        adj[u].pb((int)to.size());
 
-        to.push_back(v);
-        cap.push_back(c);
+        to.pb(v);
+        cap.pb(c);
 
-        adj[v].push_back((int)to.size());
+        adj[v].pb((int)to.size());
 
-        to.push_back(u);
-        cap.push_back(0);
+        to.pb(u);
+        cap.pb(0);
     };
 
     for (int i = 0; i < m; i++) {

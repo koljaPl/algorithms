@@ -37,7 +37,7 @@ int main() {
     vector<vector<int>> graph(n);
     vector<vector<int>> reverse_graph(n);
 
-    for (int i = 0; i < m; ++i) {
+    for (int i = 0; i < m; i++) {
         int a, b;
         cin >> a >> b;
 
@@ -50,7 +50,7 @@ int main() {
 
     vector<bool> visited = bfs(0, graph);
 
-    for (int v = 0; v < n; ++v) {
+    for (int v = 0; v < n; v++) {
         if (!visited[v]) {
             cout << "NO\n";
             cout << 1 << ' ' << v + 1 << '\n';
@@ -60,7 +60,7 @@ int main() {
 
     vector<bool> visited_reverse = bfs(0, reverse_graph);
 
-    for (int v = 0; v < n; ++v) {
+    for (int v = 0; v < n; v++) {
         if (!visited_reverse[v]) {
             cout << "NO\n";
             cout << v + 1 << ' ' << 1 << '\n';

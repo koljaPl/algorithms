@@ -13,7 +13,7 @@ int main() {
     vector<vector<int>> graph(n);
     vector<vector<int>> rev(n);
 
-    for (int i = 0; i < m; ++i) {
+    for (int i = 0; i < m; i++) {
         int a, b;
         cin >> a >> b;
 
@@ -28,7 +28,7 @@ int main() {
     vector<int> order;
     order.reserve(n);
 
-    for (int start = 0; start < n; ++start) {
+    for (int start = 0; start < n; start++) {
         if (visited[start])
             continue;
 
@@ -63,7 +63,7 @@ int main() {
 
     int k = 0;
 
-    for (auto it = order.rbegin(); it != order.rend(); ++it) {
+    for (auto it = order.rbegin(); it != order.rend(); it++) {
         int start = *it;
 
         if (kingdom[start] != 0)
