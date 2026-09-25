@@ -25,13 +25,8 @@ int main() {
     unordered_set<int> cycle;
 
     function<bool(int)> dfs = [&](int course) {
-        if (cycle.count(course)) {
-            return false;
-        }
-
-        if (visited.count(course)) {
-            return true;
-        }
+        if (cycle.count(course)) return false;
+        if (visited.count(course)) return true;
 
         cycle.insert(course);
 
