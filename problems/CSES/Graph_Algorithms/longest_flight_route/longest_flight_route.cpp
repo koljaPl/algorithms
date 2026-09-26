@@ -73,7 +73,6 @@ int main() {
         for (int v : path) {
             cout << v << ' ';
         }
-
         cout << '\n';
     }
 
