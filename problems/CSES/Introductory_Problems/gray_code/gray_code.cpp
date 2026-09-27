@@ -19,7 +19,7 @@ int main() {
         for (auto &x : gray)
             next.push_back("0" + x);
 
-        for (auto it = gray.rbegin(); it != gray.rend(); ++it)
+        for (auto it = gray.rbegin(); it != gray.rend(); it++)
             next.push_back("1" + *it);
 
         gray = move(next);
