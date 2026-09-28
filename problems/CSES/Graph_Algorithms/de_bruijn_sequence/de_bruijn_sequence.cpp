@@ -28,7 +28,7 @@ int main() {
     function<void(int)> dfs = [&](int v) {
         while (used[v] < 2) {
             int bit = used[v];
-            ++used[v];
+            used[v]++;
 
             int u = ((v << 1) | bit) & mask;
 
