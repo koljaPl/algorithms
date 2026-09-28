@@ -24,7 +24,7 @@ int main() {
         a--;
         b--;
 
-        graph[a].push_back({b, c});
+        graph[a].pb({b, c});
     }
 
 
@@ -53,9 +53,8 @@ int main() {
         auto [d, v] = pq.top();
         pq.pop();
 
-        if (d != dist[v]) {
+        if (d != dist[v])
             continue;
-        }
 
         for (auto [u, w] : graph[v]) {
             ll new_dist = d + w;
