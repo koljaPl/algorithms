@@ -13,21 +13,21 @@ int main() {
     vector<vector<pair<int, int>>> graph(n);
     vector<int> degree(n, 0);
 
-    for (int edge_id = 0; edge_id < m; ++edge_id) {
+    for (int i = 0; i < m; i++) {
         int a, b;
         cin >> a >> b;
 
         a--;
         b--;
 
-        graph[a].pb({b, edge_id});
-        graph[b].pb({a, edge_id});
+        graph[a].pb({b, i});
+        graph[b].pb({a, i});
 
         degree[a]++;
         degree[b]++;
     }
 
-    for (int v = 0; v < n; ++v) {
+    for (int v = 0; v < n; v++) {
         if (degree[v] % 2) {
             cout << "IMPOSSIBLE\n";
             return 0;
@@ -54,12 +54,12 @@ int main() {
             path.pb(v);
             stack.pop_back();
         } else {
-            auto [u, edge_id] = graph[v][index[v]];
+            auto [u, i] = graph[v][index[v]];
 
             index[v]++;
 
-            if (!used[edge_id]) {
-                used[edge_id] = true;
+            if (!used[i]) {
+                used[i] = true;
                 stack.pb(u);
             }
         }
