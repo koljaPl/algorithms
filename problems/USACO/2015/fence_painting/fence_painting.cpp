@@ -8,7 +8,7 @@ void setIO(string s) {
 	freopen((s + ".out").c_str(), "w", stdout);
 }
 
-int main() {
+int main_v1() {
     setIO("paint");
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -24,6 +24,22 @@ int main() {
 	for (bool i : painted) res += i;
 
 	cout << res << "\n";
+
+    return 0;
+}
+
+int main() {
+    setIO("paint");
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int a, b, c, d;
+	cin >> a >> b >> c >> d;
+
+	int total = (b - a) + (d - c);
+	int intersection = max(min(b, d) - max(a, c), 0);
+
+	cout << total - intersection << "\n";
 
     return 0;
 }
