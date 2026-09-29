@@ -42,15 +42,13 @@ int main() {
     cin >> n >> x;
 
     vector<int> coins(n);
-    for (int j = 0; j < n; ++j) {
-        cin >> coins[j];
-    }
+    for (int j = 0; j < n; j++) cin >> coins[j];
 
     vector<int> ways(x + 1);
     ways[0] = 1;
-    for (int i = 1; i <= x; ++i) {
+    for (int i = 1; i <= x; i++) {
         ways[i] = 0;
-        for (int j = 0; j < n; ++j) {
+        for (int j = 0; j < n; j++) {
             if (i - coins[j] >= 0) {
                 ways[i] = (ways[i] + ways[i - coins[j]]) % MOD;
             }
