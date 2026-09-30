@@ -2,4 +2,4 @@
 
 ![img.png](img.png)
 
-  
+thanks for everything that i had, it was a good time :)
