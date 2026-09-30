@@ -127,3 +127,18 @@ int main() {
 	 */
 	printf("The sum of these three numbers is %d\n", a + b + c);
 }
+
+ll power(ll base, ll exp, ll mod) {
+    ll res = 1;
+    base = base % mod;
+    
+    while (exp > 0) {
+        if (exp % 2 == 1) {
+            res = (res * base) % mod;
+        }
+        base = (base * base) % mod;
+        exp /= 2;
+    }
+
+    return res;
+}

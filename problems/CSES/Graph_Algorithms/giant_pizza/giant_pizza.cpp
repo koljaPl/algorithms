@@ -28,7 +28,7 @@ int main() {
         reverse_graph[v].pb(u);
     };
 
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; i++) {
         char s1, s2;
         int x1, x2;
 
@@ -44,7 +44,7 @@ int main() {
     vector<bool> visited(2 * m, false);
     vector<int> order;
 
-    for (int start = 0; start < 2 * m; ++start) {
+    for (int start = 0; start < 2 * m; start++) {
         if (visited[start]) {
             continue;
         }
@@ -77,7 +77,7 @@ int main() {
     vector<int> component(2 * m, -1);
     int component_id = 0;
 
-    for (auto it = order.rbegin(); it != order.rend(); ++it) {
+    for (auto it = order.rbegin(); it != order.rend(); it++) {
         int start = *it;
 
         if (component[start] != -1) {
@@ -104,7 +104,7 @@ int main() {
 
     vector<char> res;
 
-    for (int i = 0; i < m; ++i) {
+    for (int i = 0; i < m; i++) {
         int positive = 2 * i;
         int negative = positive + 1;
 

@@ -92,39 +92,30 @@ int main_v1() {
 
     FenwickTree fenwick(static_cast<int>(times.size()));
 
-    int zeroIndex =
-        static_cast<int>(upper_bound(times.begin(), times.end(), 0)
-                         - times.begin());
+    int zeroIndex = static_cast<int>(upper_bound(times.begin(), times.end(), 0) - times.begin());
 
     fenwick.add(zeroIndex, k);
 
-    int result = 0;
-
+    int res = 0;
     for (auto [start, finish] : movies) {
-        int position =
-            static_cast<int>(upper_bound(times.begin(), times.end(), start)
-                             - times.begin());
+        int position = static_cast<int>(upper_bound(times.begin(), times.end(), start) - times.begin());
 
         int availableCount = fenwick.prefixSum(position);
 
-        if (availableCount == 0) {
-            continue;
-        }
+        if (availableCount == 0) continue;
 
         int memberIndex = fenwick.kth(availableCount);
 
         fenwick.add(memberIndex, -1);
 
-        int finishIndex =
-            static_cast<int>(lower_bound(times.begin(), times.end(), finish)
-                             - times.begin()) + 1;
+        int finishIndex = static_cast<int>(lower_bound(times.begin(), times.end(), finish) - times.begin()) + 1;
 
         fenwick.add(finishIndex, 1);
 
-        result++;
+        res++;
     }
 
-    cout << result << '\n';
+    std::cout << res << '\n';
 
     return 0;
 }
@@ -137,8 +128,7 @@ int main() {
     cin >> n >> k;
 
     vector<pair<int, int>> movies(n);
-    for (int i = 0; i < n; i++)
-        cin >> movies[i].second >> movies[i].first;
+    for (int i = 0; i < n; i++) cin >> movies[i].second >> movies[i].first;
 
     sort(movies.begin(), movies.end());
 

@@ -10,7 +10,6 @@ int main() {
     cin >> n >> k;
 
     vector<ll> arr(n);
-
     for (ll& x : arr) cin >> x;
 
     auto canDivide = [&](ll limit) {

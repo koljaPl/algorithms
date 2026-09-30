@@ -21,7 +21,7 @@ int main() {
     vector<pair<int, int>> edges;
     edges.reserve(m);
 
-    for (int i = 0; i < m; ++i) {
+    for (int i = 0; i < m; i++) {
         int a, b;
         cin >> a >> b;
 
@@ -37,7 +37,7 @@ int main() {
     vector<int> order;
     order.reserve(n);
 
-    for (int start = 0; start < n; ++start) {
+    for (int start = 0; start < n; start++) {
         if (visited[start]) continue;
 
         vector<pair<int, int>> stack;
@@ -68,7 +68,7 @@ int main() {
     vector<int> component(n, -1);
     int component_count = 0;
 
-    for (int i = n - 1; i >= 0; --i) {
+    for (int i = n - 1; i >= 0; i--) {
         int start = order[i];
 
         if (component[start] != -1) continue;
@@ -93,7 +93,7 @@ int main() {
 
     vector<ll> component_coins(component_count, 0);
 
-    for (int node = 0; node < n; ++node)
+    for (int node = 0; node < n; node++)
         component_coins[component[node]] += coins[node];
 
     vector<vector<int>> dag(component_count);
@@ -106,7 +106,7 @@ int main() {
         if (ca != cb) dag[ca].pb(cb);
     }
 
-    for (int node = 0; node < component_count; ++node) {
+    for (int node = 0; node < component_count; node++) {
         sort(dag[node].begin(), dag[node].end());
 
         dag[node].erase(
@@ -118,18 +118,15 @@ int main() {
     }
 
     vector<int> queue;
-
-    for (int node = 0; node < component_count; ++node) {
+    for (int node = 0; node < component_count; node++) {
         if (indegree[node] == 0)
             queue.pb(node);
     }
 
     vector<ll> dp = component_coins;
-
-    int index = 0;
-
-    while (index < (int)queue.size()) {
-        int node = queue[index++];
+    int idx = 0;
+    while (idx < (int)queue.size()) {
+        int node = queue[idx++];
 
         for (int neighbor : dag[node]) {
             dp[neighbor] = max(dp[neighbor], dp[node] + component_coins[neighbor]);

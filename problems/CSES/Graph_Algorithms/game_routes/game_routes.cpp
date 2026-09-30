@@ -13,7 +13,6 @@ int main() {
     cin >> n >> m;
 
     vector<vector<int>> graph(n);
-
     vector<int> indegree(n, 0);
 
     for (int i = 0; i < m; i++) {
@@ -26,7 +25,6 @@ int main() {
     }
 
     queue<int> q;
-
     for (int v = 0; v < n; v++) {
         if (indegree[v] == 0) {
             q.push(v);
@@ -34,7 +32,6 @@ int main() {
     }
 
     vector<int> dp(n, 0);
-
     dp[0] = 1;
 
     while (!q.empty()) {
